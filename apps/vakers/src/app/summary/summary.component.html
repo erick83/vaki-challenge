@@ -1,7 +1,7 @@
-<vaki-challenge-summary-card></vaki-challenge-summary-card>
+<vaki-challenge-summary-card [vaki]="$vakis | async"></vaki-challenge-summary-card>
 <div class="container">
   <div class="reward-sub">Recompensas:</div>
   <div class="rewards-container">
-    <vaki-challenge-rewards *ngFor="let item of rewards" [reward]="item" class="reward"></vaki-challenge-rewards>
+    <vaki-challenge-rewards *ngFor="let item of ($vkRewards | async)" [reward]="item" class="reward"></vaki-challenge-rewards>
   </div>
 </div>

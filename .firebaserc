@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "vaki-cf5f6": {
+      "hosting": {
+        "vakers": [
+          "vaki-cf5f6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "vaki-cf5f6"
+  }
+}

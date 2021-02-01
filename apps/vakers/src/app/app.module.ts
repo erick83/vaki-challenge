@@ -10,7 +10,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
+import { AngularFireModule } from '@angular/fire'
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
+import { environment } from '../environments/environment'
 import { AppComponent } from './app.component';
 import { SummaryComponent } from './summary/summary.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -19,9 +23,19 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { RewardsComponent } from './rewards/rewards.component';
+import { VakiEffects } from './vaki.effects';
+import { vakiReducer, vakiRewardReducer } from './vaki.reducer'
 
 @NgModule({
-  declarations: [AppComponent, SummaryComponent, HeaderComponent, SideBarComponent, LayoutComponent, SummaryCardComponent, RewardsComponent],
+  declarations: [
+    AppComponent,
+    SummaryComponent,
+    HeaderComponent,
+    SideBarComponent,
+    LayoutComponent,
+    SummaryCardComponent,
+    RewardsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,6 +49,12 @@ import { RewardsComponent } from './rewards/rewards.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    StoreModule.forRoot({
+      vaki: vakiReducer,
+      reward: vakiRewardReducer,
+     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    EffectsModule.forRoot([VakiEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

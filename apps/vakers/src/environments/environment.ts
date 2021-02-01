@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebase: {
+    apiKey: 'AIzaSyB2nUjLHKXNkh1lxK-o6LepfLFY2ZTtTIw',
+    authDomain: 'vaki-cf5f6.firebaseapp.com',
+    projectId: 'vaki-cf5f6',
+    storageBucket: 'vaki-cf5f6.appspot.com',
+    messagingSenderId: '568478974188',
+    appId: '1:568478974188:web:af1c73237da026c575a5c9',
+    // measurementId: '<your-measurement-id>'
+  }
 };
 
 /*

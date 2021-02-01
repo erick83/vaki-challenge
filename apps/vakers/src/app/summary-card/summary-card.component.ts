@@ -1,20 +1,5 @@
-import { Component } from '@angular/core';
-
-export interface Vaki {
-  description: string;
-  start_date: number;
-  close_date: number;
-  name: string;
-  summary: string;
-  url: string;
-  photo?: string;
-  video?: string;
-  country: Country['isoCode'];
-}
-
-export interface Country {
-  isoCode: [string]
-}
+import { Component, Input } from '@angular/core';
+import { Vaki } from '../model/vaki.interface';
 
 @Component({
   selector: 'vaki-challenge-summary-card',
@@ -29,8 +14,10 @@ export class SummaryCardComponent {
     name: 'Campaña de esterilización GRATUITA en Bahia Solano',
     summary: '',
     url: '\\assets\\images\\item\\1.png',
-    country: ['Col'],
+    country: 'Col',
   }
 
   selected = 'USD';
+
+  @Input() vaki: Vaki[]
 }
