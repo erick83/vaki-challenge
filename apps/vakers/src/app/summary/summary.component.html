@@ -1,4 +1,4 @@
-<vaki-challenge-summary-card [vaki]="$vakis | async"></vaki-challenge-summary-card>
+<vaki-challenge-summary-card *ngIf="($vakis | async).length > 0" [vaki]="$vakis | async"></vaki-challenge-summary-card>
 <div class="container">
   <div class="reward-sub">Recompensas:</div>
   <div class="rewards-container">

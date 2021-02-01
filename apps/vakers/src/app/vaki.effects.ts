@@ -16,8 +16,7 @@ export class VakiEffects {
       .pipe(
         map(vakis => storeVaki({ payload: vakis })),
         catchError(() => EMPTY)
-      )
-      ),
+      )),
       tap(action => {
         this.store.dispatch(action)
       })
@@ -30,8 +29,7 @@ export class VakiEffects {
       .pipe(
         map(rewards => storeRewards({ payload: rewards })),
         catchError(() => EMPTY)
-      )
-      ),
+      )),
       tap(action => {
         this.store.dispatch(action)
       })
