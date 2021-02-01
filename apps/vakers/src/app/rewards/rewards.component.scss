@@ -1,0 +1,25 @@
+.reward-box {
+  width: calc(100% - 30px);
+  box-shadow: 0px 0px 5px 5px #f3f3f3;
+  padding: 15px;
+
+  button {
+    width: 100%;
+  }
+}
+
+.reward-header {
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+}
+
+.reward-title {
+  width: 65%;
+}
+
+.reward-description {
+  height: 6rem;
+  margin: 5px 0;
+}
+

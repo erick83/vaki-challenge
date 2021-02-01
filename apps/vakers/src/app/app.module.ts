@@ -18,9 +18,10 @@ import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SummaryCardComponent } from './summary-card/summary-card.component';
+import { RewardsComponent } from './rewards/rewards.component';
 
 @NgModule({
-  declarations: [AppComponent, SummaryComponent, HeaderComponent, SideBarComponent, LayoutComponent, SummaryCardComponent],
+  declarations: [AppComponent, SummaryComponent, HeaderComponent, SideBarComponent, LayoutComponent, SummaryCardComponent, RewardsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

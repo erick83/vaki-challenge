@@ -1,0 +1,24 @@
+.container {
+  display: block;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 910px;
+  padding-bottom: 70px;
+}
+
+.reward-sub {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.rewards-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reward {
+  width: calc(33.34% - 11px);
+  margin: 5px 5px;
+}
