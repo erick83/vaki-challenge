@@ -5,7 +5,7 @@ import { VakiReward } from '../model/vaki-reward.interface'
 import { Vaki } from '../model/vaki.interface';
 
 import { FirestoreService } from '../services/firestore.service';
-import { getVakis, getRewards } from '../vaki.actions'
+import { getVakis, getRewards, addReward } from '../vaki.actions'
 
 @Component({
   selector: 'vaki-challenge-summary',
@@ -26,8 +26,10 @@ export class SummaryComponent implements OnInit {
     this.store.dispatch(getRewards())
     this.$vakis = this.store.select('vaki')
     this.$vkRewards = this.store.select('reward')
+  }
 
-    this.firestore.addToCart().subscribe(console.log)
+  addReward(value: string) {
+    this.firestore.addToCart(value).subscribe(console.log)
   }
 
 }
