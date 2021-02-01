@@ -5,7 +5,7 @@ import { VakiReward } from '../model/vaki-reward.interface'
 import { Vaki } from '../model/vaki.interface';
 
 import { FirestoreService } from '../services/firestore.service';
-import { getVakis, getRewards, addReward } from '../vaki.actions'
+import { getVakis, getRewards } from '../vaki.actions'
 
 @Component({
   selector: 'vaki-challenge-summary',

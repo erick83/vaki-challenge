@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
-    <a mat-button routerLink="/vaki">
+    <a mat-button routerLink="">
       <img class="logo" alt="Vaki Logo" src="assets/images/logos/vaki-logo-white&green.svg">
     </a>
 
@@ -11,7 +11,7 @@
     <a mat-button>Crear</a>
     <a mat-button>Aprender</a>
     <span class="spacer"></span>
-    <button mat-button matBadge="8" matBadgeColor="primary">Carrito</button>
+    <a mat-button [matBadge]="cartCounter" matBadgeColor="primary" routerLink="/cart">Carrito</a>
     <img class="lola" alt="Lola" src="assets/images/logos/lola-icon.gif">
   </mat-toolbar-row>
 </mat-toolbar>

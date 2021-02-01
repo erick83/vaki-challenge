@@ -24,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { VakiEffects } from './vaki.effects';
-import { vakiReducer, vakiRewardReducer } from './vaki.reducer'
+import { vakiReducer, vakiRewardReducer, vakiCartReducer } from './vaki.reducer';
+import { CartComponent } from './cart/cart.component'
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { vakiReducer, vakiRewardReducer } from './vaki.reducer'
     LayoutComponent,
     SummaryCardComponent,
     RewardsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { vakiReducer, vakiRewardReducer } from './vaki.reducer'
     StoreModule.forRoot({
       vaki: vakiReducer,
       reward: vakiRewardReducer,
+      cart: vakiCartReducer,
      }),
     AngularFireModule.initializeApp(environment.firebase),
     EffectsModule.forRoot([VakiEffects]),

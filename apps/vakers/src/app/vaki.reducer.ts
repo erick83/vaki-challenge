@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
+import { Cart } from './model/cart.interface';
 import { VakiReward } from './model/vaki-reward.interface';
 import { Vaki } from './model/vaki.interface';
 
-import { storeVaki, storeRewards } from './vaki.actions';
+import { storeVaki, storeRewards, storeCart } from './vaki.actions';
 
 
 export const initialVakiState: Vaki[] = [];
@@ -26,4 +27,15 @@ const _vakiRewardReducer = createReducer(
 );
 export function vakiRewardReducer(state, action) {
   return _vakiRewardReducer(state, action);
+}
+
+export const initialCartReducer: Cart[] = []
+const _vakiCartReducer = createReducer(
+  initialCartReducer,
+  on(storeCart, (state, action) => {
+    return action.payload
+  }),
+);
+export function vakiCartReducer(state, action) {
+  return _vakiCartReducer(state, action);
 }

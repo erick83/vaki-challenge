@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Vaki } from '../model/vaki.interface';
 import { VakiReward } from '../model/vaki-reward.interface';
 import { environment } from '../../environments/environment'
+import { Cart } from '../model/cart.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class FirestoreService {
 
   getRewards() {
     return this.firestore.collection<VakiReward>('Rewards').valueChanges();
+  }
+
+  getCart() {
+    return this.firestore.collection<Cart>('Cart').valueChanges();
   }
 
   addToCart(key: string) {

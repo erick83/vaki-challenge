@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { CartComponent } from './cart/cart.component';
 import { LayoutComponent } from './layout/layout.component';
 
 import { SummaryComponent } from './summary/summary.component';
@@ -11,12 +12,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/resumen',
+        redirectTo: '/summary',
         pathMatch: 'full',
       },
       {
-        path: 'resumen',
+        path: 'summary',
         component: SummaryComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
       },
     ]
   },

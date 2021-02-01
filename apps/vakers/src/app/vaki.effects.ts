@@ -5,7 +5,7 @@ import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError, tap, takeLast, take } from 'rxjs/operators';
 
 import { FirestoreService } from './services/firestore.service';
-import { getVakis, storeVaki, getRewards, storeRewards, addReward  } from './vaki.actions'
+import { getVakis, storeVaki, getRewards, storeRewards, getCart, storeCart  } from './vaki.actions'
 
 @Injectable()
 export class VakiEffects {
@@ -28,6 +28,19 @@ export class VakiEffects {
     mergeMap(() => this.firestoreService.getRewards()
       .pipe(
         map(rewards => storeRewards({ payload: rewards })),
+        catchError(() => EMPTY)
+      )),
+      tap(action => {
+        this.store.dispatch(action)
+      })
+    )
+  );
+
+  loadCarts$ = createEffect(() => this.actions$.pipe(
+    ofType(getCart),
+    mergeMap(() => this.firestoreService.getCart()
+      .pipe(
+        map(cart => storeCart({ payload: cart })),
         catchError(() => EMPTY)
       )),
       tap(action => {
