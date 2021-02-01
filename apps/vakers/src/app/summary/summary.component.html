@@ -2,6 +2,12 @@
 <div class="container">
   <div class="reward-sub">Recompensas:</div>
   <div class="rewards-container">
-    <vaki-challenge-rewards *ngFor="let item of ($vkRewards | async)" [reward]="item" class="reward" (rewardSelectedEvent)="addReward($event)"></vaki-challenge-rewards>
+    <vaki-challenge-rewards
+      class="reward"
+      *ngFor="let item of ($vkRewards | async)"
+      [reward]="item"
+      (rewardSelectedEvent)="addReward($event)"
+      [loading]="loading"
+    ></vaki-challenge-rewards>
   </div>
 </div>

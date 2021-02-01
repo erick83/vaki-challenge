@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { AngularFireModule } from '@angular/fire'
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -51,6 +52,7 @@ import { CartComponent } from './cart/cart.component'
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     StoreModule.forRoot({
       vaki: vakiReducer,
       reward: vakiRewardReducer,

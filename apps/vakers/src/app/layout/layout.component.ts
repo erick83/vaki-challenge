@@ -19,5 +19,4 @@ export class LayoutComponent implements OnInit {
     this.store.dispatch(getCart())
     this.$cart = this.store.select('cart')
   }
-
 }

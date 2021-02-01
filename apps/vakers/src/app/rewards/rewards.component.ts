@@ -8,9 +8,15 @@ import { VakiReward } from '../model/vaki-reward.interface';
 })
 export class RewardsComponent {
   @Input() reward: VakiReward;
-  @Output() rewardSelectedEvent = new EventEmitter<string>();
+  @Input() loading: string[];
+  @Output() rewardSelectedEvent = new EventEmitter<{ value: string, key: string }>();
 
   addReward(value: string) {
-    this.rewardSelectedEvent.emit(value)
+    this.rewardSelectedEvent.emit({value, key: this.reward.key})
+  }
+
+  isLoading() {
+    console.log(this.loading.includes(this.reward.key))
+    return this.loading.includes(this.reward.key)
   }
 }

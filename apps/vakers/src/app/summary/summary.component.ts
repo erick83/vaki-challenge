@@ -13,13 +13,11 @@ import { getVakis, getRewards } from '../vaki.actions'
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  title = 'vakers';
   $vakis: Observable<Vaki[]>;
   $vkRewards: Observable<VakiReward[]>;
+  loading: string[] = []
 
-  constructor(private firestore: FirestoreService, private store: Store<{ vaki: Vaki[], reward: VakiReward[] }>) {
-
-  }
+  constructor(private firestore: FirestoreService, private store: Store<{ vaki: Vaki[], reward: VakiReward[] }>) {}
 
   ngOnInit() {
     this.store.dispatch(getVakis())
@@ -28,8 +26,11 @@ export class SummaryComponent implements OnInit {
     this.$vkRewards = this.store.select('reward')
   }
 
-  addReward(value: string) {
-    this.firestore.addToCart(value).subscribe(console.log)
+  addReward({value, key}) {
+    this.loading.push(key)
+    this.firestore.addToCart(value).subscribe(() => {
+      this.loading.splice(this.loading.indexOf(key))
+    })
   }
 
 }
