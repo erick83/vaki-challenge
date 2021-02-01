@@ -1,14 +1,17 @@
-<mat-toolbar class="header-toolbar" class="header">
+<mat-toolbar class="dark-bg">
   <mat-toolbar-row>
-    <div class="container">
-      <div class="row between-xs middle-xs header-row">
-        <nav>
-          <a mat-button routerLink="/vaki">
-            <img alt="Vaki Logo" src="assets/images/vaki-logo-white&green.svg">
-          </a>
-        </nav>
-        <!-- <vaki-challenge-cart-status></vaki-challenge-cart-status> -->
-      </div>
-    </div>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button routerLink="/vaki">
+      <img class="logo" alt="Vaki Logo" src="assets/images/logos/vaki-logo-white&green.svg">
+    </a>
+
+    <a mat-button>Explorar</a>
+    <a mat-button>Crear</a>
+    <a mat-button>Aprender</a>
+    <span class="spacer"></span>
+    <button mat-button matBadge="8" matBadgeColor="primary">Carrito</button>
+    <img class="lola" alt="Lola" src="assets/images/logos/lola-icon.gif">
   </mat-toolbar-row>
 </mat-toolbar>
