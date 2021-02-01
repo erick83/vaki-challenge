@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="img-section">
+    <img class="img" [src]="data.url" alt="1">
+  </div>
+  <div class="body-section">
+    <div class="header">
+      <h2>{{data.name}}</h2>
+      <a href="#">Ver Info</a>
+    </div>
+
+    <div class="progress">
+      <div class="prog-top">
+        <span>{{data.close_date}} dias antes del cierre Ene 31, 2021</span>
+        <span>47% de la meta</span>
+      </div>
+      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+      <div class="prog-bot">
+        <span>Meta</span>
+        <span>COP $3.200.000</span>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="section">
+        <mat-icon color="primary">trending_up</mat-icon>
+        <div>
+          <span>COP$ 355521115</span>
+          <br />
+          <span class="grey">Recaudado</span>
+        </div>
+      </div>
+      <div class="section">
+        <mat-icon color="primary">favorite</mat-icon>
+        <div>
+          <span>1248</span>
+          <br />
+          <span class="grey">Vakers</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="currency">
+        <mat-select [(value)]="selected" class="select">
+          <mat-option value="USD">USD</mat-option>
+          <mat-option value="COP">COP</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="value">
+        <input matInput placeholder="$3.000">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="btn">APORTAR</button>
+    </div>
+
+    <button mat-stroked-button class="reward-button" color="primary">Ver Recompensas</button>
+
+    <div class="tags">
+      <button mat-stroked-button class="tags-buttons" color="primary">Impacto</button>
+      <button mat-stroked-button class="tags-buttons" color="primary">Animales</button>
+      <button mat-stroked-button class="tags-buttons" color="primary">Causa Social</button>
+      <div class="spacer"></div>
+      <button mat-icon-button><mat-icon color="primary">share</mat-icon></button>
+    </div>
+  </div>
+
+</div>

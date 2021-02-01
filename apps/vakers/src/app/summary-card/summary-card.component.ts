@@ -17,11 +17,11 @@ export interface Country {
 }
 
 @Component({
-  selector: 'vaki-challenge-resume-card',
-  templateUrl: './resume-card.component.html',
-  styleUrls: ['./resume-card.component.scss']
+  selector: 'vaki-challenge-summary-card',
+  templateUrl: './summary-card.component.html',
+  styleUrls: ['./summary-card.component.scss']
 })
-export class ResumeCardComponent {
+export class SummaryCardComponent {
   data: Vaki = {
     description: '',
     start_date: 15,
@@ -32,4 +32,5 @@ export class ResumeCardComponent {
     country: ['Col'],
   }
 
+  selected = 'USD';
 }

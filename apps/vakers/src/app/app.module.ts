@@ -7,17 +7,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
+import { MatInputModule } from '@angular/material/input'
 
 import { AppComponent } from './app.component';
-import { ResumeComponent } from './resume/resume.component';
+import { SummaryComponent } from './summary/summary.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ResumeCardComponent } from './resume-card/resume-card.component';
+import { SummaryCardComponent } from './summary-card/summary-card.component';
 
 @NgModule({
-  declarations: [AppComponent, ResumeComponent, HeaderComponent, SideBarComponent, LayoutComponent, ResumeCardComponent],
+  declarations: [AppComponent, SummaryComponent, HeaderComponent, SideBarComponent, LayoutComponent, SummaryCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +31,9 @@ import { ResumeCardComponent } from './resume-card/resume-card.component';
     MatBadgeModule,
     MatCardModule,
     MatProgressBarModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

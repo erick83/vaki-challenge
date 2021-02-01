@@ -42,3 +42,12 @@ $vakers-theme: mat-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .dark-bg { background-color: mat-color($vaki-mat-accent, 'main'); color: mat-color($vaki-mat-accent, 'lighter');}
+
+.mat-select-value {
+  overflow: visible !important;
+
+}
+.mat-select-value-text {
+  display: block;
+  margin-top: -4px;
+}

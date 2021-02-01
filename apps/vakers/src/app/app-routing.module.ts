@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 
-import { ResumeComponent } from './resume/resume.component';
+import { SummaryComponent } from './summary/summary.component';
 
 const routes: Routes = [
   {
@@ -11,12 +11,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/resume',
+        redirectTo: '/resumen',
         pathMatch: 'full',
       },
       {
-        path: 'resume',
-        component: ResumeComponent,
+        path: 'resumen',
+        component: SummaryComponent,
       },
     ]
   },

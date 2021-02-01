@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResumeCardComponent } from './resume-card.component';
+import { SummaryCardComponent } from './summary-card.component';
 
-describe('ResumeCardComponent', () => {
-  let component: ResumeCardComponent;
-  let fixture: ComponentFixture<ResumeCardComponent>;
+describe('SummaryCardComponent', () => {
+  let component: SummaryCardComponent;
+  let fixture: ComponentFixture<SummaryCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResumeCardComponent ]
+      declarations: [ SummaryCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResumeCardComponent);
+    fixture = TestBed.createComponent(SummaryCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
