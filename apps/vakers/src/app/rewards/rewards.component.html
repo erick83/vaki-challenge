@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="reward-description">{{reward.description}}</div>
-  <button mat-stroked-button color="primary" (click)="addReward(reward.key)" [disabled]="reward.quantityAvailable - (cart && cart.cant) === 0">
+  <button mat-stroked-button color="primary" (click)="addReward()" [disabled]="reward.quantityAvailable - (cart && cart.cant) === 0">
     COP {{reward.value | currency}}
   </button>
 </div>
