@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { getRewards, addItemCart, removeItemCart, clearCart } from '../vaki.actions'
 import { VakiReward } from '../model/vaki-reward.interface'
 import { Cart } from '../model/cart.interface';
+import { FirestoreService } from '../services/firestore.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vaki-challenge-cart',
@@ -16,9 +18,16 @@ export class CartComponent implements OnInit {
   $cart: Observable<Cart[]>;
 
   rewards: VakiReward[];
+  carts: Cart[];
   total = 0;
+  showSuccessAlert = false;
+  showLoader = false;
 
-  constructor(private store: Store<{ cart: Cart[], reward: VakiReward[] }>) { }
+  constructor(
+    private firestore: FirestoreService,
+    private store: Store<{ cart: Cart[], reward: VakiReward[] }>,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.store.dispatch(getRewards());
@@ -30,10 +39,11 @@ export class CartComponent implements OnInit {
     });
 
     this.$cart.subscribe(carts => {
-      this.total = 0
+      this.total = 0;
+      this.carts = carts;
       carts.forEach(cart => {
         this.total+= this.getValue(cart.reward_key) * cart.cant
-      })
+      });
     })
   }
 
@@ -57,4 +67,22 @@ export class CartComponent implements OnInit {
     this.store.dispatch(clearCart({ key }))
   }
 
+  purchase() {
+    this.showLoader = true;
+    this.firestore.purchase(this.carts)
+      .subscribe(response => {
+        if (response.status === 201) {
+          for (const cart of this.carts) {
+            this.clearCart(cart.reward_key)
+          }
+
+          this.showSuccessAlert = true
+
+          setTimeout(() => {
+            this.showSuccessAlert = false;
+            this.router.navigate(['summary']);
+          }, 3000);
+        }
+      })
+  }
 }

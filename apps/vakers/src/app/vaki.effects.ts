@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store'
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap, takeLast, take } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap } from 'rxjs/operators';
 
 import { FirestoreService } from './services/firestore.service';
-import { getVakis, storeVaki, getRewards, storeRewards, getCart, storeCart  } from './vaki.actions'
+import { getVakis, storeVaki, getRewards, storeRewards  } from './vaki.actions'
 
 @Injectable()
 export class VakiEffects {
@@ -35,19 +35,6 @@ export class VakiEffects {
       })
     )
   );
-
-  // loadCarts$ = createEffect(() => this.actions$.pipe(
-  //   ofType(getCart),
-  //   mergeMap(() => this.firestoreService.getCart()
-  //     .pipe(
-  //       map(cart => storeCart({ payload: cart })),
-  //       catchError(() => EMPTY)
-  //     )),
-  //     tap(action => {
-  //       this.store.dispatch(action)
-  //     })
-  //   )
-  // );
 
   constructor(
     private actions$: Actions,

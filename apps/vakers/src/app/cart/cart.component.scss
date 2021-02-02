@@ -8,6 +8,7 @@
 
 .empty-cart {
   background-color: map-get($vaki-black, 20);
+  text-align: center;
 }
 
 .cart {
@@ -55,4 +56,23 @@
     padding: 8px 0 0;
     margin-right: 20px;
   }
+}
+
+.loader {
+  position: absolute;
+  height: calc(100vh - 64px);
+  width: 100%;
+  top: 64px;
+  z-index: 5;
+  display: flex;
+
+  .spinner {
+    margin: auto;
+  }
+}
+
+.success {
+  background-color: map-get($vaki-primary, 60);
+  margin-top: 3rem;
+  text-align: center;
 }

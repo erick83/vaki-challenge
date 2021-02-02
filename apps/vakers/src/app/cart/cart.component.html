@@ -1,5 +1,7 @@
+<div class="loader" *ngIf="showLoader"><mat-spinner class="spinner"></mat-spinner></div>
 <div class="container">
-  <mat-card class="empty-cart" *ngIf="($cart | async)?.length === 0 else showCart">Seleccione una recompenza</mat-card>
+  <mat-card class="empty-cart" *ngIf="(($cart | async)?.length === 0 && !showSuccessAlert) else showCart">Seleccione una recompenza</mat-card>
+  <mat-card class="success" *ngIf="showSuccessAlert">Compra Realizada Satisfactoriamente</mat-card>
 </div>
 
 <ng-template #showCart>
@@ -7,7 +9,7 @@
     <h2>Carrito de Compra</h2>
     <div class="spacer"></div>
     <div class="total">Total: {{ total | currency }}</div>
-    <button mat-flat-button color="primary">Comprar</button>
+    <button mat-flat-button color="primary" (click)="purchase()">Comprar</button>
   </div>
   <mat-card *ngFor="let cart of ($cart | async)" class="cart">
     <p class="title">{{ getRewardData(cart.reward_key)?.title }}</p>
