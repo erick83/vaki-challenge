@@ -1,14 +1,6 @@
 import { APP_BASE_HREF, Location } from '@angular/common';
 import { TestBed, fakeAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { LayoutComponent } from './../layout/layout.component';
-import { AppRoutingModule } from './../app-routing.module';
-import { SummaryComponent } from './../summary/summary.component';
-import { CartComponent } from './../cart/cart.component';
-import { HeaderComponent } from './../header/header.component';
-import { SummaryCardComponent } from './../summary-card/summary-card.component';
-import { RewardsComponent } from './../rewards/rewards.component';
-import { TodayDiffPipe } from './../pipes/today-diff.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,12 +12,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { LayoutComponent } from './../layout/layout.component';
+import { AppRoutingModule } from './../app-routing.module';
+import { SummaryComponent } from './../summary/summary.component';
+import { CartComponent } from './../cart/cart.component';
+import { HeaderComponent } from './../header/header.component';
+import { SummaryCardComponent } from './../summary-card/summary-card.component';
+import { RewardsComponent } from './../rewards/rewards.component';
+import { TodayDiffPipe } from './../pipes/today-diff.pipe';
 import { ValidStringPipe } from '../pipes/valid-string.pipe';
 
 describe('LayoutComponent', () => {
   let location: Location;
   let router: Router;
+  const initialState = { value: 'test' };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -52,9 +54,11 @@ describe('LayoutComponent', () => {
         MatSelectModule,
         MatInputModule,
         MatProgressSpinnerModule,
-        StoreModule.forRoot({}),
       ],
-      providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+      providers: [
+        {provide: APP_BASE_HREF, useValue : '/' },
+        provideMockStore({initialState})
+      ],
     }).compileComponents()
 
   });
