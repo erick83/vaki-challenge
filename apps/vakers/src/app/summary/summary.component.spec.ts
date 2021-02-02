@@ -18,7 +18,6 @@ import { LayoutComponent } from './../layout/layout.component';
 import { AppRoutingModule } from './../app-routing.module';
 import { CartComponent } from './../cart/cart.component';
 import { HeaderComponent } from './../header/header.component';
-import { SideBarComponent } from './../side-bar/side-bar.component';
 import { SummaryCardComponent } from './../summary-card/summary-card.component';
 import { RewardsComponent } from './../rewards/rewards.component';
 import { TodayDiffPipe } from './../pipes/today-diff.pipe';
@@ -47,7 +46,6 @@ describe('SummaryComponent', () => {
       declarations: [
         SummaryComponent,
         HeaderComponent,
-        SideBarComponent,
         LayoutComponent,
         SummaryCardComponent,
         RewardsComponent,

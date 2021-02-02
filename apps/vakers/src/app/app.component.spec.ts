@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SummaryComponent } from './summary/summary.component';
 import { CartComponent } from './cart/cart.component';
 import { HeaderComponent } from './header/header.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { TodayDiffPipe } from './pipes/today-diff.pipe';
@@ -23,10 +22,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { provideMockStore } from '@ngrx/store/testing';
+import { ValidStringPipe } from './pipes/valid-string.pipe';
 
 describe('AppComponent', () => {
   let location: Location;
   let router: Router;
+  const initialState = {
+    reward: {
+      title: 'Test',
+      description: '',
+      visible: true,
+      img: '',
+      key: '1',
+      value: '0000000',
+      delivery_date: 1612282311,
+      claimed: 0,
+      quantityAvailable: 20,
+    }
+   };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -34,11 +48,11 @@ describe('AppComponent', () => {
         AppComponent,
         SummaryComponent,
         HeaderComponent,
-        SideBarComponent,
         LayoutComponent,
         SummaryCardComponent,
         RewardsComponent,
         CartComponent,
+        ValidStringPipe,
         TodayDiffPipe,
       ],
       imports: [
@@ -56,11 +70,14 @@ describe('AppComponent', () => {
         MatInputModule,
         MatProgressSpinnerModule,
       ],
-      providers: [{provide: APP_BASE_HREF, useValue : '/' }]
+      providers: [
+        {provide: APP_BASE_HREF, useValue : '/' },
+        provideMockStore({initialState})
+      ],
     }).compileComponents()
 
-    router = TestBed.get(Router)
-    location = TestBed.get(Location)
+    router = TestBed.inject(Router)
+    location = TestBed.inject(Location)
     router.initialNavigation()
   });
 
