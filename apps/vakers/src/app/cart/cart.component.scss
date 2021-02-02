@@ -25,6 +25,14 @@
 
   .title {
     width: 20%;
+    position: relative;
+
+    .thumbnail {
+      height: 40px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 
   .value {

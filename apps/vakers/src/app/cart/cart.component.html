@@ -12,7 +12,7 @@
     <button mat-flat-button color="primary" (click)="purchase()">Comprar</button>
   </div>
   <mat-card *ngFor="let cart of ($cart | async)" class="cart">
-    <p class="title">{{ getRewardData(cart.reward_key)?.title }}</p>
+    <p class="title"><img class="thumbnail" [src]="getRewardData(cart.reward_key)?.img" *ngIf="getRewardData(cart.reward_key)?.img | validString"> {{ getRewardData(cart.reward_key)?.title }}</p>
     <p class="value">{{ getValue(cart.reward_key) | currency }}</p>
     <p class="cant">{{ cart.cant }}</p>
     <p class="value">{{ getValue(cart.reward_key) * cart.cant | currency }}</p>

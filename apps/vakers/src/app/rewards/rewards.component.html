@@ -2,8 +2,7 @@
   <div class="reward-header">
     <div class="reward-title">{{reward.title}}</div>
     <div class="reward-img">
-      <mat-icon color="primary">star</mat-icon>
-      <!-- <img [src]="reward.img" alt=""> -->
+      <img [src]="reward.img" *ngIf="(reward.img | validString) else showStart" class="thumbnail">
     </div>
   </div>
   <div class="reward-description">{{reward.description}}</div>
@@ -11,3 +10,7 @@
     COP {{reward.value | currency}}
   </button>
 </div>
+
+<ng-template #showStart>
+  <mat-icon color="primary">star</mat-icon>
+</ng-template>
