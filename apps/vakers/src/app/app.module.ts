@@ -26,7 +26,8 @@ import { SummaryCardComponent } from './summary-card/summary-card.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { VakiEffects } from './vaki.effects';
 import { vakiReducer, vakiRewardReducer, vakiCartReducer } from './vaki.reducer';
-import { CartComponent } from './cart/cart.component'
+import { CartComponent } from './cart/cart.component';
+import { TodayDiffPipe } from './pipes/today-diff.pipe'
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CartComponent } from './cart/cart.component'
     SummaryCardComponent,
     RewardsComponent,
     CartComponent,
+    TodayDiffPipe,
   ],
   imports: [
     BrowserModule,

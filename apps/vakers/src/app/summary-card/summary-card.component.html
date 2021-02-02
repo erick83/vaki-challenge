@@ -10,7 +10,7 @@
 
     <div class="progress">
       <div class="prog-top">
-        <span>{{vaki[0].close_date}} dias antes del cierre Ene 31, 2021</span>
+        <span>{{this.vaki[0].close_date | todayDiff}} dias antes del cierre {{vaki[0].close_date * 1000 | date}}</span>
         <span>47% de la meta</span>
       </div>
       <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
@@ -24,7 +24,7 @@
       <div class="section">
         <mat-icon color="primary">trending_up</mat-icon>
         <div>
-          <span>COP$ 355521115</span>
+          <span>COP$ 355.521.115.00</span>
           <br />
           <span class="grey">Recaudado</span>
         </div>
