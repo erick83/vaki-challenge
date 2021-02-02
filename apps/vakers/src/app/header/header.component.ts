@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Cart } from '../model/cart.interface';
 
 @Component({
@@ -10,17 +11,19 @@ import { Cart } from '../model/cart.interface';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() $cart: Observable<Cart[]>;
-  subscription: Subscription;
+  unsubscribe$ = new Subject<void>();
   cartCounter = 0;
 
   ngOnInit(): void {
-    this.subscription = this.$cart.subscribe((data: Cart[]) => {
-      this.cartCounter = data.reduce((prev, curr) => prev + curr.cant, 0)
-    })
+    this.$cart
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((data: Cart[]) => {
+        this.cartCounter = data.reduce((prev, curr) => prev + curr.cant, 0)
+      })
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
-
 }
