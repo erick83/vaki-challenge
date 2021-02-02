@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ValidStringPipe implements PipeTransform {
 
   transform(value: string): boolean {
-    return (value !== null) && (value !== '')
+    return (value !== null) && (value !== '') && (value !== undefined)
   }
 
 }
