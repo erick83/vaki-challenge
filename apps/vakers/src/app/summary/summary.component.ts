@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Cart } from '../model/cart.interface';
 
 import { VakiReward } from '../model/vaki-reward.interface'
@@ -12,11 +13,12 @@ import { getVakis, getRewards, addItemCart } from '../vaki.actions'
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
-export class SummaryComponent implements OnInit {
+export class SummaryComponent implements OnInit, OnDestroy {
   $vakis: Observable<Vaki[]>;
   $vkRewards: Observable<VakiReward[]>;
   $carts: Observable<Cart[]>;
   carts: Cart[];
+  unsubscribe$ = new Subject<void>();
 
   constructor(private store: Store<{ vaki: Vaki[], reward: VakiReward[], cart: Cart[] }>) {}
 
@@ -27,9 +29,16 @@ export class SummaryComponent implements OnInit {
     this.$vkRewards = this.store.select('reward');
     this.$carts = this.store.select('cart')
 
-    this.$carts.subscribe(i => {
-      this.carts = i
-    })
+    this.$carts
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(i => {
+        this.carts = i
+      })
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   addReward({ key }) {

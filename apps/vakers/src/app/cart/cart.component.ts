@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { getRewards, addItemCart, removeItemCart, clearCart } from '../vaki.actions'
 import { VakiReward } from '../model/vaki-reward.interface'
 import { Cart } from '../model/cart.interface';
 import { FirestoreService } from '../services/firestore.service';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'vaki-challenge-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   $vkRewards: Observable<VakiReward[]>;
   $cart: Observable<Cart[]>;
+  unsubscribe$ = new Subject<void>();
 
   rewards: VakiReward[];
   carts: Cart[];
@@ -34,9 +36,11 @@ export class CartComponent implements OnInit {
     this.$vkRewards = this.store.select('reward');
     this.$cart = this.store.select('cart');
 
-    this.$vkRewards.subscribe(rewards => {
-      this.rewards = rewards;
-    });
+    this.$vkRewards
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(rewards => {
+        this.rewards = rewards;
+      });
 
     this.$cart.subscribe(carts => {
       this.total = 0;
@@ -45,6 +49,11 @@ export class CartComponent implements OnInit {
         this.total+= this.getValue(cart.reward_key) * cart.cant
       });
     })
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   getRewardData(key) {

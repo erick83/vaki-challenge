@@ -37,7 +37,6 @@ export class FirestoreService {
 
   purchase(carts: Cart[]) {
     const _purchase = this.functions.httpsCallable('purchase');
-    console.log(carts)
     return _purchase(carts)
   }
 }

@@ -7,11 +7,6 @@ import { Vaki } from '../model/vaki.interface';
   styleUrls: ['./summary-card.component.scss']
 })
 export class SummaryCardComponent {
-  selected = 'USD';
-
   @Input() vaki: Vaki[]
-
-  getDifferenceOfDays() {
-    return Math.floor((this.vaki[0].close_date - Date.now()) / (1000*60*60*24))
-  }
+  selected = 'USD';
 }
