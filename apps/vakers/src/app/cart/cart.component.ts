@@ -68,6 +68,10 @@ export class CartComponent implements OnInit, OnDestroy {
     this.store.dispatch(addItemCart({ key }))
   }
 
+  disableAdd(cart: Cart) {
+    return this.rewards.find(i => i.key === cart.reward_key).quantityAvailable - (cart && cart.cant) === 0;
+  }
+
   removeItemCart(key) {
     this.store.dispatch(removeItemCart({ key }))
   }

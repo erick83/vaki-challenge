@@ -17,7 +17,7 @@
     <p class="cant">{{ cart.cant }}</p>
     <p class="value">{{ getValue(cart.reward_key) * cart.cant | currency }}</p>
     <div class="controls">
-      <button mat-icon-button (click)="addItemCart(cart.reward_key)"><mat-icon color="primary">add_circle_outline</mat-icon></button>
+      <button mat-icon-button (click)="addItemCart(cart.reward_key)" [disabled]="disableAdd(cart)"><mat-icon color="primary">add_circle_outline</mat-icon></button>
       <button mat-icon-button (click)="removeItemCart(cart.reward_key)"><mat-icon color="primary">remove_circle_outline</mat-icon></button>
       <button mat-icon-button (click)="clearCart(cart.reward_key)"><mat-icon color="primary">delete_outline</mat-icon></button>
     </div>
