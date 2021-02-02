@@ -35,8 +35,8 @@ export class FirestoreService {
     return this.firestore.collection<Cart>('Cart').valueChanges();
   }
 
-  addToCart(key: string) {
-    const _addToCart = this.functions.httpsCallable('addToCart');
-    return _addToCart({ reward_key: key });
-  }
+  // addToCart(key: string) {
+  //   const _addToCart = this.functions.httpsCallable('addToCart');
+  //   return _addToCart({ reward_key: key });
+  // }
 }

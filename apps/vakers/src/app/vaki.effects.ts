@@ -36,18 +36,18 @@ export class VakiEffects {
     )
   );
 
-  loadCarts$ = createEffect(() => this.actions$.pipe(
-    ofType(getCart),
-    mergeMap(() => this.firestoreService.getCart()
-      .pipe(
-        map(cart => storeCart({ payload: cart })),
-        catchError(() => EMPTY)
-      )),
-      tap(action => {
-        this.store.dispatch(action)
-      })
-    )
-  );
+  // loadCarts$ = createEffect(() => this.actions$.pipe(
+  //   ofType(getCart),
+  //   mergeMap(() => this.firestoreService.getCart()
+  //     .pipe(
+  //       map(cart => storeCart({ payload: cart })),
+  //       catchError(() => EMPTY)
+  //     )),
+  //     tap(action => {
+  //       this.store.dispatch(action)
+  //     })
+  //   )
+  // );
 
   constructor(
     private actions$: Actions,

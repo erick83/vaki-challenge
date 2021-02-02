@@ -1,1 +1,23 @@
-<p>cart works!</p>
+<div class="container">
+  <mat-card class="empty-cart" *ngIf="($cart | async)?.length === 0 else showCart">Seleccione una recompenza</mat-card>
+</div>
+
+<ng-template #showCart>
+  <div class="cart-control">
+    <h2>Carrito de Compra</h2>
+    <div class="spacer"></div>
+    <div class="total">Total: {{ total | currency }}</div>
+    <button mat-flat-button color="primary">Comprar</button>
+  </div>
+  <mat-card *ngFor="let cart of ($cart | async)" class="cart">
+    <p class="title">{{ getRewardData(cart.reward_key)?.title }}</p>
+    <p class="value">{{ getValue(cart.reward_key) | currency }}</p>
+    <p class="cant">{{ cart.cant }}</p>
+    <p class="value">{{ getValue(cart.reward_key) * cart.cant | currency }}</p>
+    <div class="controls">
+      <button mat-icon-button (click)="addItemCart(cart.reward_key)"><mat-icon color="primary">add_circle_outline</mat-icon></button>
+      <button mat-icon-button (click)="removeItemCart(cart.reward_key)"><mat-icon color="primary">remove_circle_outline</mat-icon></button>
+      <button mat-icon-button (click)="clearCart(cart.reward_key)"><mat-icon color="primary">delete_outline</mat-icon></button>
+    </div>
+  </mat-card>
+</ng-template>

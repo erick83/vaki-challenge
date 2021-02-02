@@ -6,8 +6,8 @@
       class="reward"
       *ngFor="let item of ($vkRewards | async)"
       [reward]="item"
+      [cart]="getCardCant(item.key)"
       (rewardSelectedEvent)="addReward($event)"
-      [loading]="loading"
     ></vaki-challenge-rewards>
   </div>
 </div>

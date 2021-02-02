@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Cart } from '../model/cart.interface';
 import { VakiReward } from '../model/vaki-reward.interface';
 
 @Component({
@@ -8,15 +9,10 @@ import { VakiReward } from '../model/vaki-reward.interface';
 })
 export class RewardsComponent {
   @Input() reward: VakiReward;
-  @Input() loading: string[];
-  @Output() rewardSelectedEvent = new EventEmitter<{ value: string, key: string }>();
+  @Input() cart: Cart;
+  @Output() rewardSelectedEvent = new EventEmitter<{ key: string }>();
 
-  addReward(value: string) {
-    this.rewardSelectedEvent.emit({value, key: this.reward.key})
-  }
-
-  isLoading() {
-    console.log(this.loading.includes(this.reward.key))
-    return this.loading.includes(this.reward.key)
+  addReward() {
+    this.rewardSelectedEvent.emit({key: this.reward.key})
   }
 }

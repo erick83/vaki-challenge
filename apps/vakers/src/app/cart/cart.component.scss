@@ -1,0 +1,58 @@
+@import '../../vaki-theme';
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto 70px;
+}
+
+.empty-cart {
+  background-color: map-get($vaki-black, 20);
+}
+
+.cart {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+
+  p {
+    margin: 0;
+    padding: 10px 0 0 0;
+  }
+
+  .title {
+    width: 20%;
+  }
+
+  .value {
+    width: 20%;
+    text-align: right;
+  }
+
+  .cant {
+    width: 10%;
+    text-align: right;
+  }
+}
+
+.cart-control {
+  display: flex;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  h2 {
+    margin: 0;
+    padding-top: 2px;
+  }
+
+  .total {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0 0;
+    margin-right: 20px;
+  }
+}

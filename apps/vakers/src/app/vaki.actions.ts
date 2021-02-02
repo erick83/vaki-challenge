@@ -9,5 +9,7 @@ export const storeVaki = createAction('[Vaki Summary] Store Data', props<{ paylo
 export const getRewards = createAction('[Vaki Summary] Get Rewards');
 export const storeRewards = createAction('[Vaki Summary] Store Rewards', props<{ payload: VakiReward[] }>());
 
-export const getCart = createAction('[Vaki Global] Get Cart');
-export const storeCart = createAction('[Vaki Global] Store Cart', props<{ payload: Cart[] }>());
+export const addItemCart = createAction('[Vaki Global] Add Item to Cart', props<{ key: string }>())
+export const removeItemCart = createAction('[Vaki Global] Remove Item from Cart', props<{ key: string }>())
+export const clearCart = createAction('[Vaki Global] Clear Cart', props<{ key: string }>())
+export const updateCart = createAction('[Vaki Global] Store Cart', props<{ payload: Cart[] }>());

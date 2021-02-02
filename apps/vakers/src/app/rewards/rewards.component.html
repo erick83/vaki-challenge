@@ -7,13 +7,7 @@
     </div>
   </div>
   <div class="reward-description">{{reward.description}}</div>
-  <button mat-stroked-button color="primary" (click)="addReward(reward.key)" [disabled]="reward.quantityAvailable === 0 || isLoading()">
-    <div *ngIf="isLoading() else notLoading" class="spinner">
-      <mat-spinner diameter="30"></mat-spinner>
-    </div>
+  <button mat-stroked-button color="primary" (click)="addReward(reward.key)" [disabled]="reward.quantityAvailable - (cart && cart.cant) === 0">
+    COP {{reward.value | currency}}
   </button>
 </div>
-
-<ng-template #notLoading>
-  COP$ {{reward.value}}
-</ng-template>
